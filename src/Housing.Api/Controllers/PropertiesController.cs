@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Housing.Api.Controllers.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Housing.Api.Controllers;
@@ -11,14 +12,14 @@ namespace Housing.Api.Controllers;
 public class PropertiesController : ControllerBase
 {
     [HttpGet]
-    public async Task<IActionResult> GetProperties()
+    public async Task<IActionResult> GetPropertiesAsync()
     {
-        return Ok("Hello");
+        return await Task.FromResult(Ok("Getting Properties..."));
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateProperty(CreatePropertyViewModel createPropertyViewModel)
+    public async Task<IActionResult> CreatePropertyAsync(CreatePropertyViewModel createPropertyViewModel)
     {
-        
+        return await Task.FromResult(Ok("Created New Property"));
     }
 }

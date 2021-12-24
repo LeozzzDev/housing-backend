@@ -4,6 +4,6 @@ namespace Housing.Domain.RepositoryInterfaces
 {
     public interface IPropertiesRepository
     {
-        Task<IEnumerable<PropertyDTO>> GetProperties();   
+        IEnumerable<PropertyDTO> GetProperties();   
     }
 }

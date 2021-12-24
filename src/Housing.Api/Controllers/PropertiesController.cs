@@ -1,3 +1,4 @@
+using Housing.Domain.DTOs;
 using Housing.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +16,9 @@ public class PropertiesController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetProperties()
+    public IEnumerable<PropertyDTO> GetProperties()
     {
         var properties = _service.GetProperties();
-        return Ok(properties);
+        return properties;
     }
 }

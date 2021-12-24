@@ -12,9 +12,9 @@ public class HousingService
         _repository = repository;
     }
 
-    public async Task<IEnumerable<PropertyDTO>> GetProperties()
+    public IEnumerable<PropertyDTO> GetProperties()
     {
-        var properties = await _repository.GetProperties();
+        var properties = _repository.GetProperties();
         return properties;
     }
 }

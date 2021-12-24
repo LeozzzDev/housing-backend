@@ -17,6 +17,7 @@ public class DumpPropertiesRepository : IPropertiesRepository
                 Id = Guid.NewGuid().ToString(),
                 Name = "LeoHouse",
                 Type = "Familiar",
+                Price = 120.00,
                 CreatedDate = DateTime.UtcNow.ToString("YYYY-MM-ddTHH:mm:ss")
             },
             new PropertyEntity
@@ -24,6 +25,7 @@ public class DumpPropertiesRepository : IPropertiesRepository
                 Id = Guid.NewGuid().ToString(),
                 Name = "Foo House",
                 Type = "Ville",
+                Price = 300000,
                 CreatedDate = DateTime.UtcNow.ToString("YYYY-MM-ddTHH:mm:ss")
             },
             new PropertyEntity
@@ -31,6 +33,7 @@ public class DumpPropertiesRepository : IPropertiesRepository
                 Id = Guid.NewGuid().ToString(),
                 Name = "Pluto House",
                 Type = "Little",
+                Price = 200.00,
                 CreatedDate = DateTime.UtcNow.ToString("YYYY-MM-ddTHH:mm:ss")
             },
             new PropertyEntity
@@ -38,16 +41,17 @@ public class DumpPropertiesRepository : IPropertiesRepository
                 Id = Guid.NewGuid().ToString(),
                 Name = "Mickey House",
                 Type = "Big",
-                CreatedDate = DateTime.UtcNow.ToString("YYYY-MM-ddTHH:mm:ss")
+                Price = 200.00,
+                CreatedDate = DateTime.UtcNow.ToString("YYYY-MM-ddTHH:mm:ss"),
             },
         };
     }
 
-    public async Task<IEnumerable<PropertyDTO>> GetProperties()
+    public IEnumerable<PropertyDTO> GetProperties()
     {
         var propertiesDtos = _properties
             .Select(entity => entity.ToDTO());
 
-        return await Task.FromResult(propertiesDtos);
+        return propertiesDtos;
     }
 }

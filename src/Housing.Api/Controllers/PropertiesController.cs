@@ -1,4 +1,5 @@
 using Housing.Api.Controllers.ViewModels;
+using Housing.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Housing.Api.Controllers;
@@ -7,15 +8,17 @@ namespace Housing.Api.Controllers;
 [Route("api/properties")]
 public class PropertiesController : ControllerBase
 {
-    [HttpGet]
-    public async Task<IActionResult> GetPropertiesAsync()
-    {
-        return await Task.FromResult(Ok("Getting Properties..."));
-    }
+    private readonly HousingService _service;
 
-    [HttpPost]
-    public async Task<IActionResult> CreatePropertyAsync(CreatePropertyViewModel createPropertyViewModel)
+    public PropertiesController(HousingService service)
     {
-        return await Task.FromResult(Ok("Created New Property"));
+        _service = service;
+    }
+    
+    [HttpGet]
+    public IActionResult GetProperties()
+    {
+        var properties = _service.GetProperties();
+        return Ok(properties);
     }
 }

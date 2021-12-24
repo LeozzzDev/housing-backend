@@ -1,4 +1,3 @@
-using Housing.Api.Controllers.ViewModels;
 using Housing.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,7 +13,7 @@ public class PropertiesController : ControllerBase
     {
         _service = service;
     }
-    
+
     [HttpGet]
     public IActionResult GetProperties()
     {

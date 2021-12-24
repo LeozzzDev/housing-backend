@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Housing.Domain.DTOs;
 
 namespace Housing.Infrastructure.Entities;
@@ -22,5 +18,4 @@ public class PropertyEntity
             Price = Price
         };
     }
-
 }

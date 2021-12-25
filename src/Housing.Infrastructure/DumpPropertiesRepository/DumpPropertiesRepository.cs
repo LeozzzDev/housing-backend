@@ -58,8 +58,8 @@ public class DumpPropertiesRepository : IPropertiesRepository
     public PropertyDTO GetPropertiesById(string id)
     {
         var property = _properties
-            .Where(property => property.Id == id).First();
-
-        return property.ToDTO();
+            .Where(property => property.Id == id).FirstOrDefault();
+            
+        return property == null ? null : property.ToDTO();
     }
 }

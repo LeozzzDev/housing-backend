@@ -54,4 +54,12 @@ public class DumpPropertiesRepository : IPropertiesRepository
 
         return propertiesDtos;
     }
+
+    public PropertyDTO GetPropertiesById(string id)
+    {
+        var property = _properties
+            .Where(property => property.Id == id).First();
+
+        return property.ToDTO();
+    }
 }

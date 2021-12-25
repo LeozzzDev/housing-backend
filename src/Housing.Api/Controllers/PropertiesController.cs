@@ -21,4 +21,17 @@ public class PropertiesController : ControllerBase
         var properties = _service.GetProperties();
         return properties;
     }
+
+    [HttpGet("{id}")]
+    public ActionResult<PropertyDTO> GetProperties(string id)
+    {
+        var property = _service.GetPropertiesById(id);
+
+        if (property == null)
+        {
+            return NotFound();
+        }
+
+        return property;
+    }
 }

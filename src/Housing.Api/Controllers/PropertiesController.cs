@@ -1,3 +1,4 @@
+using Housing.Api.Controllers.ViewModels;
 using Housing.Domain.DTOs;
 using Housing.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -23,9 +24,9 @@ public class PropertiesController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult<PropertyDTO> GetProperties(string id)
+    public ActionResult<PropertyDTO> GetProperty(string id)
     {
-        var property = _service.GetPropertiesById(id);
+        var property = _service.GetPropertyById(id);
 
         if (property == null)
         {
@@ -33,5 +34,12 @@ public class PropertiesController : ControllerBase
         }
 
         return property;
+    }
+
+    [HttpPost]
+    public ActionResult<PropertyDTO> CreateProperty(CreatePropertyViewModel request)
+    {
+        var property = _service.CreateProperty(request.ToDTO());
+        return CreatedAtAction(nameof(GetProperty), new { Id = property.Id }, property);
     }
 }

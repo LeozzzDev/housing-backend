@@ -18,9 +18,15 @@ public class HousingService
         return properties;
     }
 
-    public PropertyDTO GetPropertiesById(string id)
+    public PropertyDTO GetPropertyById(string id)
     {
-        var property = _repository.GetPropertiesById(id);
+        var property = _repository.GetPropertyById(id);
+        return property;
+    }
+
+    public PropertyDTO CreateProperty(PropertyDTO property)
+    {
+        property = _repository.CreateProperty(property);
         return property;
     }
 }

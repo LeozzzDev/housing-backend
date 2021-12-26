@@ -55,11 +55,26 @@ public class DumpPropertiesRepository : IPropertiesRepository
         return propertiesDtos;
     }
 
-    public PropertyDTO GetPropertiesById(string id)
+    public PropertyDTO GetPropertyById(string id)
     {
         var property = _properties
             .Where(property => property.Id == id).FirstOrDefault();
-            
+
         return property == null ? null : property.ToDTO();
+    }
+
+    public PropertyDTO CreateProperty(PropertyDTO property)
+    {
+        var propertyEntity = new PropertyEntity
+        {
+            Id = Guid.NewGuid().ToString(),
+            Name = property.Name,
+            Type = property.Type,
+            Price = property.Price,
+            CreatedDate = DateTime.UtcNow.ToString("YYYY-MM-ddTHH:mm:ss"),
+        };
+        
+        _properties.Add(propertyEntity);
+        return propertyEntity.ToDTO();
     }
 }
